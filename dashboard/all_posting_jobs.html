@@ -1,0 +1,113 @@
+        <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Edit Profile</h4>
+                  <p class="card-category">Complete your profile</p>
+                </div>
+                <div class="card-body">
+                  <form action="" method="post" enctype="multipart/form-data">
+                          <?php 
+                           foreach ($result as $value) { ?>
+
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Company/Official Name</label>
+                          <input type="text"  readonly class="form-control" id="companyName" value="<?php echo $value['official_name'];?>" name="companyName" >
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Contact Number</label>
+                          <input type="phone" name="mobile" id="mobile" class="form-control" value="<?php echo $value['contact_no'];?>" placeholder="Enter Contact Number">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Official Email Id</label>
+                          <input type="email" readonly name="email" id="email" class="form-control" value="<?php echo $value['email_id'];?>" placeholder="Enter Official Email Id">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">City Name</label>
+                          <input type="text" name="city" id="city" class="form-control" value="<?php echo $value['city'];?>" placeholder="Enter City Name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Pin Code</label>
+                          <input type="text" name="pincode" id="pincode" class="form-control" value="<?php echo $value['pin_code'];?>" placeholder="Enter Pin Code">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Office Address</label>
+                          <input class="form-control" name="address" id="address" rows="5" value="<?php echo $value['address'];?>" id="comment" placeholder="Enter office Adress">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">New Password</label>
+                          <input type="password" name="password" id="password" autocomplete="off" class="form-control" >
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Confirm Password</label>
+                          <input type="password" name="confirmPassword" autocomplete="off" id="confirmPassword"  class="form-control">
+                        </div>
+                      </div>
+                    </div>
+       <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+        <label>Upload Image</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file addfiles">
+                    Browse… <input type="file" name="profile_pic" id="profile_pic" class="form-control">
+                         
+                </span>
+            </span>
+             <?php if($value['profile_pic'] != "") { ?>
+                           <img src="<?=base_url()?>assets/images/profile_pic/<?php echo $value['profile_pic']; ?>" class="img-responsive" style="max-height: 150px; max-width: 150px;">
+                          <?php } ?>
+        </div>
+        <img id='img-upload'/>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+    <div class="form-group">
+        <label>Upload Script</label>
+        <div class="input-group">
+            <span class="input-group-btn ">
+                <span class="btn btn-default btn-file addscript">
+                    Browse… <input type="file" name="script_name"  id="script_name" class="form-control">
+                </span>
+            </span>
+            
+        </div>
+        <img id='img-upload'/>
+    </div>
+</div>
+</div>      
+  
+
+                      
+  <?php } ?>
+                    
+                    <div id="error-box"></div>
+                    <button type="button" name="submit" id="btnDirectorProfile" class="btn btn-primary pull-right">Update Profile</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+                

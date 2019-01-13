@@ -1,0 +1,2057 @@
+<style type="text/css">
+  .navbar.navbar-transparent
+  {
+    background-color: #000 !important;
+  }
+  .view-award-section
+  {
+    display: none;
+  }
+  .view-association-section
+  {
+    display: none;
+  }
+  .add-work-details
+  {
+    display: none;
+  }
+  .hideaddassoc
+  {
+    display: none;
+  }
+  .hideaddaward
+  {
+    display: none;
+  }
+  .hideadd
+  {
+    display: none;
+  }
+  
+  .hideImage
+  {
+    display: none ;
+  }
+  .hideSave
+  {
+    display: none ;
+  }
+  .hideSaveWork
+  {
+    display: none ;
+  }
+  .hideSaveAward
+  {
+    display: none ;
+  }
+  .hideSaveSocial
+  {
+    display: none ;
+  }
+  .hideSaveAssoc
+  {
+    display: none ;
+  }
+  .hideScript
+  {
+    display: none ;
+  }
+  .buttondemo
+  {
+    display: none;
+  }
+  .buttondemo1
+  {
+    display: none;
+  }
+  .buttondemo2
+  {
+    display: none;
+  }
+  .show-border .form-control-plaintext {
+    border-bottom: 1px solid #666;
+  }
+</style>
+
+
+<!-- Tabs -->
+<section id="tabs">
+  <div class="container">
+       <div class="row">
+          
+            <div class="col-md-12">
+              <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title mt-0 "> My Profile</h4>
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+    <!-- <h2 class="section-title ">Job Applications</h2> -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile</a>
+            <a class="nav-item nav-link pendingApplicationList" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Work Experience</a>
+            <a class="nav-item nav-link rejectedApplicationList" id="nav-award-tab" data-toggle="tab" href="#nav-award" role="tab" aria-controls="nav-award" aria-selected="false">Awards & Recognitions</a>
+             <a class="nav-item nav-link rejectedApplicationList" id="nav-socialLink-tab" data-toggle="tab" href="#nav-socialLink" role="tab" aria-controls="nav-socialLink" aria-selected="false">Social Links</a>
+              <a class="nav-item nav-link rejectedApplicationList" id="nav-associations-tab" data-toggle="tab" href="#nav-associations" role="tab" aria-controls="nav-associations" aria-selected="false">Associations</a>
+          
+          </div>
+        </nav>
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+<!-- Profile Section -->
+          <div class="tab-pane fade show active hideprofile" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            
+                <div class="col-lg-12">
+                  <div class="row">
+                 <div class="col-lg-6 text-center ">
+                    <h3 class="txtred" style="margin-left: 392px;">Profile</h3>
+                      </div>
+                 <div class="col-lg-6 hideIcon">
+                  
+                  <i class="fa fa-edit" data-toggle="modal" onclick="newInfo()" style="font-size: 34px;
+    padding-top: 19px;
+    margin-left: 382px;"></i>
+                 </div>
+               </div>
+               </div>
+           <div class="ProfileView" style="background-color: #fff;">
+              <div class="profileForm" style="    padding: 1px 20px 0px 20px;">
+                <form class="" method="post" id="formId" action="" enctype="multipart/form-data">
+                   <?php 
+                      foreach ($result as $value) { ?>
+                  <div class="row" id="profile_parent_div">
+                    <div class="col-lg-4" style="background-color: #eee;">
+
+
+                        
+
+                                     <div class="picture-container" style="position: relative;top: 17%;">
+                                          <div class="picture text-center">
+                                              <?php if($value['profile_pic']) { ?>
+    <img src="<?php echo base_url()?>assets/images/profile_pic/<?php echo $value['profile_pic']; ?>" class="picture-src" id="blah" title="" alt="" style="width: 50%;height: 50%;margin: 0 auto;border-radius: 10%;"/>
+
+                                              <!-- <img id="blah" /> -->
+                                            <?php }else { ?>
+                                                
+    <img src="<?php echo base_url()?>assets/images/profile_pic/userprofile.jpg" class="picture-src" id="wizardPicturePreview" title="" alt="" style="width: 50%;height: 50%;margin: 0 auto;border-radius: 10%;"/>
+                                            <?php } ?>
+
+                                              <div class="form-group text-center hideImage">
+                                        <label>Choose Profile photo</label>
+
+                                         <div class="input-group">
+
+                                        <span class="input-group-btn" style="margin: 0 auto;">
+
+<span class="btn btn-default btn-file addscript" style="    background-color: #ff007c;">
+
+Browse… <input type="file" runat="server" name="profile_pic"  id="profile_pic" class="form-control">
+
+                                         </span>
+                                         </span>
+                                        </div>
+                                       
+                                         <img id='img-uploarunat="server"d'/>
+                                      </div>
+                                    </div>
+                                         
+                                      </div>
+                                  
+                    </div>
+
+                      <!-- ************** -->
+                     <div class="col-lg-8">
+                               <div class="row">
+                                 <div class="col-lg-6">
+                                      <div class="form-group required" >
+                                        <label>Company  Name:
+                                       </label>
+                                        <input type="text" readonly class="form-control-plaintext" id="companyName"  style="border-radius: 5px;
+    padding: 5px;" value="<?php echo $value['official_name'];?>" name="companyName" >
+                                      </div>
+                                      <div class="form-group required">
+                                          <label>Official Email ID 
+                                            <!-- <small>(required)</small> -->
+                                          </label>
+                                        <input type="email" style="border-radius: 5px;
+    padding: 5px; background-color: white;" readonly name="email" id="email" class="form-control-plaintext" value="<?php echo $value['email_id'];?>" placeholder="Enter Official Email Id">
+                                      </div>
+                                      <div class="form-group required">
+                                        <label>Contact No. 
+                                          <!-- <small>(required)</small> -->
+                                        </label>
+                                        <input type="phone" readonly name="mobile" id="mobile" style="border-radius: 5px;
+    padding: 5px; background-color: white;" class="form-control-plaintext" value="<?php echo $value['contact_no'];?>" placeholder="Enter Contact Number">
+                                      </div>
+                                   <div class="form-group">
+                                        <label>Upload Profile</label>
+                                        <br>
+                                        <div class="showScript">
+                                        <?php if($value['script_file']){  ?>
+                    <label class="txtgreen" id="script-name"> <?php echo $value['script_file']; ?> </label>
+             <?php } else{ ?> 
+               <label class="txtgreen" id="script-name">  </label>
+               <?php } ?>
+             </div>
+                                         <div class="input-group hideScript">
+                                        <span class="input-group-btn ">
+                                         <span class="btn btn-default btn-file addscript" style="    background-color: #ff007c;">
+                                          Browse… <input type="file" readonly name="script_name"  id="script_name" accept=".pdf,.doc" class="form-control">
+                                         </span>
+                                         <?php if($value['script_file']){  ?>
+                    <label class="txtgreen" id="script-name"> <?php echo $value['script_file']; ?> </label>
+             <?php } else{ ?> 
+               <label class="txtgreen" id="script-name">  </label>
+               <?php } ?>
+                                         </span>
+            
+                                          </div>
+                                         <img id='img-upload'/>
+                                      </div>
+
+                                <!--   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+                                    <label class="checkbox-inline">
+                                      <input type="checkbox" name="terms" id="terms" value="1"> I agree with the Terms and Conditions
+                                    </label>
+                                  </div> -->
+                                  </div>
+                                  <!-- *********** -->
+                                   <div class="col-lg-6">
+                                      <div class="form-group required">
+                                        <label> City 
+                                          <!-- <small>(required)</small> -->
+                                        </label>
+                                          <input type="text" style="border-radius: 5px;
+    padding: 5px;" readonly name="city" id="city" class="form-control-plaintext" value="<?php echo $value['city'];?>" placeholder="Enter City Name">
+
+                                        <!--<select name="cities" id="city" class="form-control">
+                                          <option>Delhi</option>
+                                          <option>Mumbai</option>
+                                        </select>-->
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Pin Code </label>
+                                          <input type="text" readonly name="pincode" id="pincode" style="border-radius: 5px;
+    padding: 5px;" class="form-control-plaintext" value="<?php echo $value['pin_code'];?>" placeholder="Enter Pin Code">
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Official Address </label>
+                                        <input class="form-control-plaintext" readonly name="address" style="border-radius: 5px;
+    padding: 5px; background-color: white;" id="address" rows="5" value="<?php echo $value['address'];?>" id="comment" placeholder="Enter office Adress">
+                                      </div>
+                                  
+                                  </div>
+                                   <?php } ?>
+                                     <div class="col-lg-12 text-right hideSave">
+                                    <!-- <input type="hidden" name="artistId" id="artistId" value=""> -->
+
+                                    <button type="button" name ="submit" value="submit" readonly class="btn btn-default  pull-right" id="btnDirectorProfile" style="    background-color: #ff007c;">Save</button>
+                                  </div>
+                               </div>
+                                  <!-- ********** -->
+
+                    </div>
+                  </div>
+                    <div class="col-md-12">
+                      <div id="error-box" style="color:red;text-transform: initial;font-weight: bold;"></div>
+                      </div> 
+                                 
+            </form>
+              </div>
+           </div>
+        
+          </div>
+<!--------------Edit code for general info start here-------------------->
+ 
+<!--------------Edit code for general info end here--------------------->
+<!-- <script type="text/javascript">
+          function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#profile_pic").change(function() {
+  readURL(this);
+});
+</script> -->
+<!-- End Profile Section -->
+<!-- Work Experience Section -->
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+ 
+            <style type="text/css">
+.add-more-block{
+  border: 2px solid #ddd;
+}
+</style>  
+ 
+  <!-- <div class="row" style="margin:0 auto">
+                <div class="col-lg-12 text-center">
+                    <h3 class="txtred">Work Experience</h3>
+               
+                 </div>
+               </div> -->
+               <div class="col-lg-12">
+                  <div class="row">
+                 <div class="col-lg-6 text-right">
+                    <h3 class="txtred" style="margin-right: -77px;" >Work Experience</h3>
+                      </div>
+                 <!-- <div class="col-lg-6 hideIconwork">
+                  
+                  <i class="fa fa-edit" data-toggle="modal" onclick="newWork()" style="font-size: 34px;
+    padding-top: 19px;
+    margin-left: 382px;"></i>
+                 </div> -->
+               </div>
+               </div>
+                <div id="workExperienceView" style="background-color: #fff;">
+    
+  
+        <form class="form-inline" action="" method="post">
+          <div class="col-md-12 text-center">
+            <br>
+            <form id="prject1">
+           <!--  <h2>Education: Add educational Qualifications(if any)</h2><hr> -->
+          </div>
+          
+            
+            <div class="pull-right col-md-12 ">
+                          <a href="javascript:void(0);" class="addWorkBtnDemo" onclick="Workdemo()" title="Add field"> <i class="fa fa-plus" aria-hidden="true"></i>&emsp;<label style="font-size: 20px; display: contents;color:#AD8C29;cursor: pointer;">Add More Work Experience</label></a>
+                      </div>
+                      <form id="prject1">
+                      <div class="video-box1 col-md-12">
+
+                   <?php
+                      $resultWork = $this->db->select('*')->from('director_work_exp')->get()->result_array();
+                                     // print_r($result);exit;
+                                    foreach ($resultWork as $key) {  ?> 
+
+            <div class="add-more-block row" id="project_parent_div<?php echo $key['work_id']?>">
+              <div class="col-lg-12 hideIconwork">
+                  
+                  <i class="fa fa-edit" onclick="test(<?php echo $key['work_id']?>)" style="font-size: 34px;
+    padding-top: 19px;
+    margin-left: 847px;"></i>
+                 </div>   
+
+<div class="col-md-6">
+
+ <div class="form-group row required">
+    <label class="col-md-5 col-form-label">Project Type</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" id="project_type<?php echo $key['work_id']?>" value="<?php echo $key['project_type'];?>" name="project_type" >
+    </div>
+  </div>
+  <div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Production Name</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" value="<?php echo $key['production_name'];?>"  id="production_name<?php echo $key['work_id']?>" name="production_name" >
+    </div>
+  </div>
+   <div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Link If Any</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" name="link" id="link<?php echo $key['work_id']?>" style="border-radius: 5px;
+    padding: 5px;" value="<?php echo $key['link'];?>"  class="form-control" value="" >
+    </div>
+  </div>
+                           </div>
+
+              <div class="col-md-6">
+
+<div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Project Title</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" name="project_title" value="<?php echo $key['project_title'];?>"  id="project_title<?php echo $key['work_id']?>"  class="form-control" >
+    </div>
+  </div>
+
+<div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Year</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" name="year" value="<?php echo $key['year'];?>"  id="year<?php echo $key['work_id']?>" class="form-control" value="" >
+    </div>
+  </div>
+  <div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Additional Details</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" readonly name="additional_info" id="additional_info<?php echo $key['work_id']?>" value="<?php echo $key['additional_info'];?>" class="form-control" >
+    </div>
+  </div>
+              </div>
+
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center hideSaveWork"style="
+    
+    padding: 20px;
+    ">
+                             <button type="button" id="saveBtn<?php echo $key['work_id']?>"  name="submit" style="width: 110px;margin-left: 743px;float: right; background-color: #ff007c;display:none;" onclick="GetProject(<?php echo $key['work_id']?>)"
+     class="btn btn-default btn-block" >Save</button>
+                       </div>
+            </div>
+<!--onclick="GetProject(<?php // echo $key['work_id']?>)" id="btnDirectorWorkexp"-->
+<!-- *************** -->
+
+
+          
+
+
+            <?php } ?>  
+          </div>
+        </form>
+
+
+          <!-- <?php if($value['project_type1']!='' || $value['production_name1']!='' || $value['link1']!='' || $value['project_title1']!='' ||$value['year1']!=''||$value['additional_info1']) { ?>
+
+
+            <div class="video-box col-md-12 add-work-details-show" >
+            
+          <div class="add-more-block row">
+              <div class="col-md-6">
+                <div class="form-group required">
+                                        <label>Project Type</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" readonly class="form-control" style="border-radius: 5px;
+    padding: 5px;" id="project_type1" value="<?php echo $value['project_type1'];?>" name="project_type1" >
+                                      </div>
+            
+             
+                <div class="form-group required">
+                                          <label>Production Name</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" style="border-radius: 5px;
+    padding: 5px;" readonly name="production_name1" value="<?php echo $value['production_name1'];?>"  id="production_name1" class="form-control">
+                                      </div>
+              
+                <div class="form-group">
+                                        <label>Link If Any <small></small></label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" style="border-radius: 5px;
+    padding: 5px;" readonly name="link1" id="link1" value="<?php echo $value['link1'];?>"  class="form-control" value="">
+                                      </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group required">
+                                        <label> Project Title</label>&nbsp;&nbsp;&nbsp;
+                                          <input type="text" readonly name="project_title1" style="border-radius: 5px;
+    padding: 5px;" value="<?php echo $value['project_title1'];?>"  id="project_title1" class="form-control" value="">&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                                      </div>
+              
+             
+                <div class="form-group required">
+                                          <label>Year </label>&nbsp;&nbsp;&nbsp;
+                                          <input type="text" style="border-radius: 5px;
+    padding: 5px;" readonly name="year1" value="<?php echo $value['year1'];?>"  id="year1" class="form-control" value="">
+                                      </div>
+           
+                <div class="form-group">
+                                        <label>Additional Details </label>&nbsp;&nbsp;&nbsp;
+                                        <input class="form-control" style="border-radius: 5px;
+    padding: 5px;" readonly name="additional_info1" id="additional_info1" value="<?php echo $value['additional_info1'];?>"  >
+
+
+                                      </div>
+              </div>
+
+
+            </div>  
+          </div> -->
+
+
+
+          <!-- <?php } ?> -->
+
+            <div class="video-box col-md-12 add-work-details" >
+            
+          <div class="add-more-block row">
+              <div class="col-md-6">
+                <div class="form-group required">
+                                        <label>Project Type</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" class="form-control" style="border-radius: 5px;
+    padding: 5px;" id="project_type" name="project_type" >
+                                      </div>
+            
+             
+                <div class="form-group required">
+                                          <label>Production Name</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" name="production_name" style="border-radius: 5px;
+    padding: 5px;"  id="production_name" class="form-control">
+                                      </div>
+              
+                <div class="form-group">
+                                        <label>Link If Any <small></small></label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text"name="link" id="link" style="border-radius: 5px;
+    padding: 5px;"  class="form-control" value="">
+                                      </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group required">
+                                        <label> Project Title</label>&nbsp;&nbsp;&nbsp;
+                                          <input type="text" style="border-radius: 5px;
+    padding: 5px;" name="project_title"  id="project_title" class="form-control" value="">&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <button class="closeBtn" type="button" onclick="buttondemo1()"> X </button>
+
+                                      </div>
+              
+             
+                <div class="form-group required">
+      <label>Year </label>&nbsp;&nbsp;&nbsp;
+      <input type="text" style="border-radius: 5px;
+    padding: 5px;"  name="year"  id="year" class="form-control">
+                                      </div>
+           
+                <div class="form-group">
+                                        <label>Additional Details </label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" class="form-control" style="border-radius: 5px;
+    padding: 5px;"  name="additional_info" id="additional_info">
+
+
+                                      </div>
+              </div>
+                
+                
+            </div>  
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center hideadd"style="
+    
+    padding: 20px;
+    ">
+                             <button type="button" onclick="AddWorkExp()" name="submit" style="width: 110px;
+    float: right; background-color: #ff007c;" class="btn btn-default btn-block">Add</button>
+  <!--   id="btnDirectorWorkexp" -->
+                       </div>
+
+
+           
+                  
+        </form> 
+     </div>
+  </div>
+
+  
+ 
+  <script type="text/javascript">
+
+
+    function Workdemo()
+{
+   // alert(1);
+   $('.add-work-details').show();
+   $('.hideadd').show();
+  // AddWorkExp();
+}
+  
+  function AddWorkExp()
+  {
+    // $('.submit').click(function(){
+        //var id = (this.id);
+        var form_data = {            //repair
+          //  work_id: id,
+            project_type: $('#project_type').val(),
+            production_name: $('#production_name').val(),
+            link: $('#link').val(),
+            project_title: $("#project_title").val(),
+          year: $("#year").val(),
+            additional_info: $("#additional_info").val()
+        };
+
+    $.ajax({
+      
+        url: '<?php echo base_url('director/add_director_work/'); ?>',//repair
+        type: 'POST',
+        data: form_data, // $(this).serialize(); you can use this too
+        success: function(msg) {
+              alert("success..!! ");
+        }
+
+   });
+   return false;
+
+
+  }
+  //function AddWorkExp(){
+ // $("#AddWorkExp").on('click', function () {
+   // alert(1):
+  //e.preventDefault();
+  // $.ajax({
+  //   url: '<?php echo base_url('director/add_director_work/'); ?>',
+
+  //   data: {
+  //     project_type: $("#project_type").val(),
+  //     production_name: $("#production_name").val(),
+  //     link: $("#link").val(),
+  //     project_title: $("#project_title").val(),
+  //     year: $("#year").val()
+  //     additional_info: $("#additional_info").val()
+  //   },
+  //   async: 'true',
+  //   cache: 'false',
+  //   type: 'post',
+  //   success: function (data) {
+  //     //jQuery("#attendence_report_holder").html(response);
+  //     alert("Data successfully added");
+  //   }
+  // });
+
+// }
+
+
+function buttondemo1()
+  {
+
+   $('.add-work-details').hide();
+   document.getElementById("project_type1").value = '';
+   document.getElementById("production_name1").value = '';
+   document.getElementById("link1").value = '';
+   document.getElementById("project_title1").value = '';
+   document.getElementById("year1").value = '';
+   document.getElementById("additional_info1").value = '';
+  }
+
+function GetDetails(project_type)
+{
+  // var project_type_new=document.getElementById("project_type<?php echo $key['work_id']?>").value;
+  // var project_title_new=document.getElementById("project_title<?php echo $key['work_id']?>").value;
+  // var production_name_new=document.getElementById("production_name<?php echo $key['work_id']?>").value;
+  // var year_new=document.getElementById("year<?php echo $key['work_id']?>").value;
+  // var link_new=document.getElementById("link<?php echo $key['work_id']?>").value;
+  // var additional_info_new=document.getElementById("additional_info<?php echo $key['work_id']?>").value;
+  //alert(id);
+
+  
+}
+    
+            
+       
+        function directorFormValidate($data)
+          {   
+              var status = true;   
+var $project_type_new=document.getElementById("project_type" +$data).value;
+var $project_title_new=document.getElementById("project_title" +$data).value;
+var $production_name_new=document.getElementById("production_name" +$data).value;
+var $year_new=document.getElementById("year" +$data).value;
+  var $link_new=document.getElementById("link" +$data).value;
+  var $additional_info_new=document.getElementById("additional_info" +$data).value;
+
+
+      var project_type= $project_type_new;
+      var project_title=$project_title_new;
+      var production_name=$production_name_new;
+      var year=$year_new;
+      var link=$link_new;
+
+       var additional_info=$additional_info_new;
+
+      // var project_type1=$("#project_type1").val();
+      // var project_title1=$("#project_title1").val();
+      // var production_name1=$("#production_name1").val();
+      // var year1=$("#year1").val();
+      // var link1=$("#link1").val();
+      // var additional_info1=$("#additional_info1").val();
+
+
+
+              if(project_type.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Project Type.<strong>");
+                status = false;
+              }            
+              else if(project_title.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Project Title.<strong>");
+                status = false;
+              }     
+              else if(production_name.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Mobile Number.<strong>");
+                status = false;
+              } 
+              
+              else if(year.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Year.<strong>");
+                status = false;
+              } 
+              else if(link.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Link.<strong>");
+                status = false;
+              } 
+              else if(additional_info.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Additional Info<strong>");
+                status = false;
+              } 
+              console.log("validation_status....................",status);
+              return status;
+              
+          }
+
+    
+    function onApprove(data)  
+
+    {  
+
+//alert(1);
+console.log("Inside onApprove function.........................");
+   // var objJSON = JSON.parse(data);
+    obj=JSON.parse(JSON.stringify(data));
+  //      //var objJSON = JSON.parse(result);
+  // alert(objJSON.project_type);
+  console.log(obj);
+  // alert(objJSON.project_title);
+          //console.log(obj[0].project_type); 
+
+      }              
+      function onError(xhr,status,error)  
+         {      console.log(xhr); 
+              console.log(status); 
+                   console.log(error);    
+          }
+
+        
+  </script>
+<script type="text/javascript">
+   function test(id)
+    {
+      alert(id);
+       var parentDiv = document.getElementById('project_parent_div'+id);
+            parentDiv.classList.add("show-border");
+            document.getElementById('project_type'+id).readOnly = false;
+            document.getElementById('project_title'+id).readOnly = false; 
+            document.getElementById('production_name'+id).readOnly = false;  
+            document.getElementById('year'+id).readOnly = false; 
+            document.getElementById('link'+id).readOnly = false; 
+            document.getElementById('additional_info'+id).readOnly = false;
+            document.getElementById('saveBtn'+id).style.display = "block";
+                   
+         $(".add-work-details").hide();
+             $(".hideSaveWork").show();
+             $(".hideIconwork").hide();
+  
+    }
+    function GetProject($data)
+    
+        {
+//$id=data;
+//alert("project_title" +$data);
+
+ 
+
+var $project_type_new=document.getElementById("project_type" +$data).value;
+var $project_title_new=document.getElementById("project_title" +$data).value;
+var $production_name_new=document.getElementById("production_name" +$data).value;
+var $year_new=document.getElementById("year" +$data).value;
+  var $link_new=document.getElementById("link" +$data).value;
+  var $additional_info_new=document.getElementById("additional_info" +$data).value;
+ //alert($project_titlfe_new);
+ //updateProject($data);
+   //$("#btnDirectorWorkexp").click(function(e){
+     
+    //alert("hi");
+   // e.preventDefault();
+   //alert($data);
+   
+    console.log("Inside btnDirectorWorkexp function........................");
+      var validation_status = directorFormValidate($data);
+      console.log(validation_status);
+      if(validation_status == true ) {
+        $("#error-box").hide(); 
+        var form_data = new FormData();  
+      // alert("hiii");
+      //pretty-print('hiii'); 
+        //form_data.append("directorId", $('#directorId').val());
+                form_data.append("project_type", $project_type_new);    
+                form_data.append("project_title", $project_title_new); 
+                form_data.append("production_name", $production_name_new);
+                form_data.append("year",$year_new);    
+                form_data.append("link",$link_new); 
+                form_data.append("additional_info",$additional_info_new);
+               //alert('additional_info');
+                // form_data.append("additional_info", $('#additional_info_new').val());
+                var jsonData = {
+                  "project_type":$project_type_new,
+                  "project_title":$project_title_new,
+                  "production_name":$production_name_new,
+                  "year":$year_new,
+                  "link":$link_new,
+                  "additional_info":$additional_info_new,
+                }
+
+                // form_data.append("project_type", $('#project_type').val());    
+                // form_data.append("project_title1", $('#project_title').val()); 
+                // form_data.append("production_name1", $('#production_name').val());
+                // form_data.append("year", $('#year').val());    
+                // form_data.append("link", $('#link').val()); 
+                // form_data.append("additional_info", $('#additional_info').val());
+                //JSON.stringify(jsonData)
+                console.log("jsonData", jsonData);
+                $.ajax({
+                 //alert("1");
+
+                  url: '<?php echo base_url('director/director_workexp/'); ?>'+ $data,
+                  type: 'POST',              
+                  data : form_data,
+                  processData: false,
+                  contentType: false,
+                  dataType: "json"
+                })
+              .done(function (res) {
+                //alert("hiii");
+                var parentDivOnSave = document.getElementById("project_parent_div" + $data);
+                parentDivOnSave.classList.remove('show-border');
+                // parentDivOnSave.classList.removeId('project_parent_div');
+                  $(".project_parent_div").remove(".project_parent_div"); 
+                console.log("RESULT---------------------------",res);
+                if(res.status="success"){
+                  alert("Work Experience Successfully.");
+               // window.location.href="<?php// echo base_url('dashboard')?>";
+                }
+                else if(res.status="fail"){
+                  $("#error-box").show();            
+                  $("#error-box").html(res.reason);
+                }
+                else{
+                  console.log("Fail");
+                }
+                  //alert(res);             
+              });
+      }
+      
+
+            
+        //});
+         
+
+
+
+
+
+}
+
+
+
+</script>
+  <script type="text/javascript">
+
+     function newWork(id)
+        {
+          // alert(id);
+            var parentDiv = document.getElementById('project_parent_div'+id);
+            parentDiv.classList.add("show-border");
+            document.getElementById('project_type'+id).readOnly = false;
+            document.getElementById('project_title'+id).readOnly = false; 
+            document.getElementById('production_name'+id).readOnly = false;  
+            document.getElementById('year'+id).readOnly = false; 
+            document.getElementById('link'+id).readOnly = false; 
+            document.getElementById('additional_info'+id).readOnly = false;
+            document.getElementById('saveBtn'+id).style.display = "block";
+                   
+         $(".add-work-details").hide();
+             $(".hideSaveWork").show();
+             $(".hideIconwork").hide();
+  
+        } 
+        
+  </script>
+
+<!-- End Work Experience section -->
+<!-- Awards And Recognition section -->
+          <div class="tab-pane fade" id="nav-award" role="tabpanel" aria-labelledby="nav-award-tab">
+
+<style type="text/css">
+.add-more-block{
+  border: 2px solid #ddd;
+}
+</style>  
+ 
+  <!-- <div class="row" style="margin:0 auto">
+                <div class="col-lg-12 text-center">
+                    <h3 class="txtred">Awards And Recognition</h3>
+                <p class="txtred">Tell us more about awards</p>
+                 </div>
+               </div> -->
+               <div class="col-lg-12">
+                  <div class="row">
+                 <div class="col-lg-6 text-center ">
+                    <h3 class="txtred" style="margin-right: -388px;">Awards And Recognition</h3>
+                      </div>
+                 <!-- <div class="col-lg-6 hideIconaward">
+                  
+                  <i class="fa fa-edit" data-toggle="modal" onclick="newAward()" style="font-size: 34px;
+    padding-top: 19px;
+    margin-left: 382px;"></i>
+                 </div> -->
+               </div>
+               </div>
+                <div id="workExperienceView" style="background-color: #fff;">
+    
+  
+        <form class="form-inline" action="" method="post">
+          
+          <div class="col-md-12 text-center">
+            <br>
+            <form id="award">
+           <!--  <h2>Education: Add educational Qualifications(if any)</h2><hr> -->
+          </div>
+         
+            
+            <div class="pull-right col-md-12">
+                          <a href="javascript:void(0);" class="addVideoBtnDemo" onclick="demo()" title="Add field"> <i class="fa fa-plus" aria-hidden="true"></i>&emsp;<label style="font-size: 20px; display: contents;color:#AD8C29;cursor: pointer;">Add More Awards/Recognitions</label></a>
+
+                        <!-- <button class="addVideoBtnDemo" type="button" onclick="demo()"> Hiii</button>-->
+                      </div>
+                      <form id="award">
+                       <div class="video-box col-md-12">
+                      <?php
+                      $resultAward = $this->db->select('*')->from('director_award_reg')->get()->result_array();
+                                     // print_r($result);exit;
+                                    foreach ($resultAward as $val) {  ?>
+
+            <div class="add-more-block row" id="award_parent_div<?php echo $val['award_id']?>">
+
+              <div class="col-lg-12 hideIconaward">
+                  
+                  <i class="fa fa-edit" data-toggle="modal" onclick="newAward(<?php echo $val['award_id']?>)" style="font-size: 34px;
+    padding-top: 19px;
+    margin-left: 833px;"></i>
+                 </div>
+
+              <div class="col-md-6">
+ <div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Award Title</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" readonly id="award_title<?php echo $val['award_id']?>" value="<?php echo $val['award_title'];?>"  name="award_title" class="form-control" >
+    </div>
+</div>
+
+               
+          <!--    id="project_title<?php //echo $key['work_id']?>" -->
+         <div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Award Year </label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" readonly name="award_year" id="award_year<?php echo $val['award_id']?>" class="form-control" value="<?php echo $val['award_year'];?>"  class="form-control" >
+    </div> 
+</div>     
+
+ 
+              
+               
+              </div>
+              <div class="col-md-6">
+<div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Award For</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" readonly name="award_for" id="award_for<?php echo $val['award_id']?>" value="<?php echo $val['award_for'];?>"  class="form-control" value="" >
+    </div>
+</div>
+<div class="form-group row">
+    <label for="staticEmail" class="col-md-5 col-form-label">Additional Details </label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" readonly name="add_details" id="add_details<?php echo $val['award_id']?>" value="<?php echo $val['add_details'];?>">
+    </div>
+</div>
+
+                                      
+             
+                                       
+           
+               
+              </div>
+
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center hideSaveAward"style="padding: 20px;">
+                             <button type="button"  name="submit" id="saveBtnAward<?php echo $val['award_id']?>" style="width: 110px;margin-left: 743px;float: right;display: none; background-color: #ff007c;" onclick="GetAward(<?php echo $val['award_id']?>)"
+   class="btn btn-default btn-block" >Save</button>
+                       </div>
+              </div>
+               
+              <?php } ?>
+              </div> 
+          </form>
+
+<!-- <button type="submit" name="submit" style="width: 110px;background-color: #ff007c;
+    float: right;" class="btn btn-default btn-block" id="btnDirectorAward">Save</button> -->
+
+
+           <!--   <?php if($value['award_title1']!='' ||$value['award_year1']!='' ||$value['award_for1']!='' || $value['add_details1']!=''){ ?>
+                    
+
+              <div class="video-box col-md-12 view-award-section-show">
+              <div class="add-more-block row">
+            
+              <div class="col-md-6">
+                                      <div class="form-group required">
+                                      <label>Award Title</label>&nbsp;&nbsp;&nbsp;
+                                      <input type="text" readonly class="form-control" id="award_title1"  style="border-radius: 5px;
+    padding: 5px;" value="<?php echo $value['award_title1'];?>"  name="award_title1">
+                                      </div>
+                                       
+                                       <div class="form-group required">
+                                        <label>Award Year <small></small></label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text"  style="border-radius: 5px;
+    padding: 5px;" readonly name="award_year1" id="award_year1" class="form-control" value="<?php echo $value['award_year1'];?>" >
+                                      </div>
+              
+                                    
+              </div>
+              <div class="col-md-6">
+               <div class="form-group required">
+                                        <label> Award For</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" style="border-radius: 5px;
+    padding: 5px;" readonly name="award_for1" id="award_for1" value="<?php echo $value['award_for1'];?>"  class="form-control" value="">&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </div>
+             
+                                        <div class="form-group">
+                                        <label>Additional Details </label>&nbsp;&nbsp;&nbsp;
+                                        <input class="form-control" style="border-radius: 5px;
+    padding: 5px;" readonly name="add_details1" id="add_details1" value="<?php echo $value['add_details1'];?>" >
+                                      </div>
+                                      </div>
+                                      </div>
+                                       </div>
+            <?php } ?> -->
+
+              <div class="video-box col-md-12 view-award-section">
+              <div class="add-more-block row">
+            
+              <div class="col-md-6">
+                                      <div class="form-group required">
+                                      <label>Award Title</label>&nbsp;&nbsp;&nbsp;
+                                      <input type="text" style="border-radius: 5px;
+    padding: 5px;" class="form-control" id="award_title"  value=""  name="award_title">
+                                      </div>
+                                       
+                                       <div class="form-group required">
+                                        <label>Award Year <small></small></label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" name="award_year" id="award_year" style="border-radius: 5px;
+    padding: 5px;" class="form-control" value="" >
+                                      </div>
+              
+                                    
+              </div>
+              <div class="col-md-6">
+               <div class="form-group required">
+                                        <label> Award For</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" style="border-radius: 5px;
+    padding: 5px;" name="award_for" id="award_for" class="form-control" value="">&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <button class="closeBtn" type="button" onclick="buttondemo2()"> X </button>
+
+                                        </div>
+             
+                                        <div class="form-group">
+                                        <label>Additional Details </label>&nbsp;&nbsp;&nbsp;
+                                        <input class="form-control" style="border-radius: 5px;
+    padding: 5px;" name="add_details" id="add_details" value="" >
+                                      </div>
+                                      </div>
+                                      </div>
+                                       </div>
+                                       
+ 
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center hideaddaward"style="
+    
+    padding: 20px;
+    ">
+                             <button type="button" onclick="AddAwardReg()" name="submit" style="width: 110px;
+    float: right; background-color: #ff007c;" class="btn btn-default btn-block">Add</button>
+  <!--   id="btnDirectorWorkexp" -->
+                       </div>
+          <!--  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center hideSaveAward"style="
+    
+    padding: 20px;
+    ">
+                             <button type="submit" name="submit" style="width: 110px;background-color: #ff007c;
+    float: right;" class="btn btn-default btn-block" id="btnDirectorAward">Save</button>
+                       </div> -->
+                     
+                  
+        </form> 
+     </div>
+  </div>
+
+  
+ 
+  <script type="text/javascript">
+function demo()
+{
+   // alert(1);
+   $('.view-award-section').show();
+    $('.hideaddaward').show();
+}
+
+function buttondemo2()
+ {
+  $('.view-award-section').hide();
+ 
+ 
+   document.getElementById("award_title1").value = '';
+   document.getElementById("award_year1").value = '';
+   document.getElementById("award_for1").value = '';
+   document.getElementById("add_details1").value = '';
+  }
+
+function AddAwardReg()
+  {
+    // $('.submit').click(function(){
+        //var id = (this.id);
+        var form_data = {            //repair
+          //  work_id: id,
+            award_title: $('#award_title').val(),
+            award_year: $('#award_year').val(),
+            award_for: $('#award_for').val(),
+            add_details: $("#add_details").val()
+     
+        };
+
+    $.ajax({
+      
+        url: '<?php echo base_url('director/add_director_award/'); ?>',//repair
+        type: 'POST',
+        data: form_data, // $(this).serialize(); you can use this too
+        success: function(msg) {
+              alert("success..!! ");
+        }
+
+   });
+   return false;
+
+
+  }
+function GetAward($data)
+{
+//alert($data);
+//alert("award_year" +$data);
+
+ // var id=document.getElementById("project_type" +$data).value;
+
+var $award_title_new=document.getElementById("award_title" +$data).value;
+var $award_year_new=document.getElementById("award_year" +$data).value;
+var $award_for_new=document.getElementById("award_for" +$data).value;
+var $add_details_new=document.getElementById("add_details" +$data).value;
+  
+ //alert($project_title_new);
+ updateAward($data);
+  
+}
+
+  </script>
+            
+            <script type="text/javascript">
+                function updateAward($data){
+    //alert("hi");
+   // e.preventDefault();
+   alert($data);
+   var $award_title_new=document.getElementById("award_title" +$data).value;
+var $award_for_new=document.getElementById("award_for" +$data).value;
+var $award_year_new=document.getElementById("award_year" +$data).value;
+var $add_details_new=document.getElementById("add_details" +$data).value;
+  
+
+    console.log("Inside award function........................");
+      var validation_status = directorFormValidate($data);
+      console.log(validation_status);
+      if(validation_status == true ) {
+        $("#error-box").hide(); 
+        var form_data = new FormData();  
+      // alert("hiii");
+      //pretty-print('hiii'); 
+        //form_data.append("directorId", $('#directorId').val());
+                form_data.append("award_title", $award_title_new);    
+                form_data.append("award_for", $award_for_new); 
+                form_data.append("award_year", $award_year_new);
+                form_data.append("add_details",$add_details_new);    
+                
+               //alert('additional_info');
+                // form_data.append("additional_info", $('#additional_info_new').val());
+                var jsonData = {
+                  "project_type":$award_title_new,
+                  "project_title":$award_for_new,
+                  "production_name":$award_year_new,
+                  "year":$add_details_new,
+                  
+                }
+
+                console.log("jsonData", jsonData);
+                $.ajax({
+                 //alert("1");
+
+                url: '<?php echo base_url('director/dir_award/'); ?>'+ $data,
+                  type: 'POST',              
+                  data : form_data,
+                  processData: false,
+                  contentType: false,
+                  dataType: "json"
+                })
+              .done(function (res) {
+                //alert("hiii");
+                var awardDiv = document.getElementById('award_parent_div'+id);
+                awardDiv.classList.remove("show-border");
+                console.log("RESULT---------------------------",res);
+                /*if(res.status="success"){
+                  alert("Work Experience Successfully.");
+                window.location.href="<?php // echo base_url('dashboard')?>";
+                }
+                else if(res.status="fail"){
+                  $("#error-box").show();            
+                  $("#error-box").html(res.reason);
+                }
+                else{
+                  console.log("Fail");
+                }*/
+                  //alert(res);             
+              });
+      }
+      
+
+            
+        //});
+        } 
+   
+      //   $("#btnDirectorAward").click(function(){
+      // var validation_status = directorFormValidate();
+      // console.log(validation_status);
+      // if(validation_status == true ) {
+      //   $("#error-box").hide(); 
+      //   var form_data = new FormData();   
+        
+      //           form_data.append("award_title", $('#award_title').val());    
+      //           form_data.append("award_for", $('#award_for').val()); 
+      //           form_data.append("award_year", $('#award_year').val());
+      //           form_data.append("add_details", $('#add_details').val());  
+
+
+
+      //           form_data.append("award_title1", $('#award_title1').val());    
+      //           form_data.append("award_for1", $('#award_for1').val()); 
+      //           form_data.append("award_year1", $('#award_year1').val());
+      //           form_data.append("add_details1", $('#add_details1').val());  
+             
+      //           $.ajax({
+      //             url: '<?php //echo base_url('director/dir_award/'); ?>',
+
+      //             type: 'POST',              
+      //             data : form_data,
+      //             processData: false,
+      //             contentType: false,
+      //             dataType: "json"
+      //           })
+      //         .done(function (res) {
+                
+      //           if(res.status="success"){
+      //             alert("Award & Recognitions Updated Successfully.");
+      //             window.location.href="<?php //echo base_url('dashboard')?>";
+      //           }
+      //           else if(res.status="fail"){
+      //             $("#error-box").show();            
+      //             $("#error-box").html(res.reason);
+      //           }
+      //           else{
+      //             console.log("Fail");
+      //           }
+                           
+      //         });
+      // }
+
+      
+      function directorFormValidate($data)
+          {   
+              var status = true; 
+var $award_title_new=document.getElementById("award_title" +$data).value;
+var $award_for_new=document.getElementById("award_for" +$data).value;
+var $award_year_new=document.getElementById("award_year" +$data).value;
+var $add_details_new=document.getElementById("add_details" +$data).value;         
+
+      var award_title=$award_title_new;
+      var award_for=$award_for_new;
+      var award_year=$award_year_new;
+      var add_details=$add_details_new;
+
+      
+     
+              if(award_title.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Award Title.<strong>");
+                status = false;
+              }            
+              else if(award_for.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Award For.<strong>");
+                status = false;
+              }     
+              else if(award_year.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Award Year.<strong>");
+                status = false;
+              } 
+              
+              else if(add_details.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Additional Details.<strong>");
+                status = false;
+              } 
+              
+              return status;
+              console.log(status);
+          }
+
+            
+      
+  
+        function newAward(id)
+        {
+             $(".hideSaveAward").show();
+             $(".hideIconaward").hide();
+             var awardDiv = document.getElementById('award_parent_div'+id);
+            awardDiv.classList.add("show-border");
+
+              //$('input[type="text"], textarea').removeAttr('readonly');
+             document.getElementById('award_title'+id).readOnly = false;
+              document.getElementById('award_for'+id).readOnly = false;
+               document.getElementById('award_year'+id).readOnly = false;
+                document.getElementById('add_details'+id).readOnly = false;
+                 
+                     document.getElementById('saveBtnAward'+id).style.display = "block";
+        }
+  </script>
+<!-- End  Awards And Recognition Section  -->
+<!-- Social Link Section  -->
+             <div class="tab-pane fade" id="nav-socialLink" role="tabpanel" aria-labelledby="nav-socialLink-tab">
+               <!-- <div class="row">
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <h3 class="txtred">Social Links </h3>
+                <p class="txtred">Please provide the supporting social links</p>
+                 </div>
+               </div> -->
+               <div class="col-lg-12">
+                  <div class="row">
+                 <div class="col-lg-6 text-center ">
+                    <h3 class="txtred" style="margin-right: -388px;">Social Links</h3>
+                      </div>
+                 <div class="col-lg-6 hideIconsocial">
+                  
+                  <i class="fa fa-edit" data-toggle="modal" onclick="newSocial()" style="font-size: 34px;
+    padding-top: 19px;
+    margin-left: 382px;"></i>
+                 </div>
+               </div>
+               </div>
+             <div id="awards" style="background-color: #fff;">
+                <form class="" method="post" id="formId" action="" enctype="multipart/form-data" style="padding: 10px;">
+                  <?php 
+                      foreach ($result as $value) {
+                      //print_r($value);exit;
+                       ?>
+                    
+                  <div class="row" id="social_parent_div">
+                      <!-- ************** -->
+                     <div class="col-lg-12">
+                               <div class="row">
+                                 <div class="col-lg-6">
+                                     
+                                    <div class="form-group">
+                                       <span class="wrapper facebook">
+
+                                       <input type="text" class="social-link-input-class form-control-plaintext" value="<?php echo $value['facebook_url'];?>"  id="facebook" style="border-radius: 5px;
+    padding: 5px;" readonly name="facebook"   placeholder="facebook"/>
+                                     </span>
+                                      </div>
+
+                                        <!-- background-color: #cecece94; -->
+                                        <div class="form-group">
+                                       <span class="wrapper instagram">
+
+                                       <input type="text" style="border-radius: 5px;
+    padding: 5px;" readonly class="social-link-input-class form-control-plaintext" value="<?php echo $value['instagram_url'];?>"  id="instagram"  name="instagram"   placeholder="Instagram"/>
+                                     </span>
+                                      </div>
+
+
+                                        <div class="form-group">
+                                       <span class="wrapper websitelink">
+
+                                       <input type="text" style="border-radius: 5px;
+    padding: 5px;" readonly class="social-link-input-class form-control-plaintext" value="<?php echo $value['website_url'];?>"  id="website"  name="website"   placeholder="Website Link"/>
+                                     </span>
+                                      </div>
+                                    
+                                  </div>
+                                  <!-- *********** -->
+                                   <div class="col-lg-6">
+                                     
+                                        <div class="form-group">
+                                       <span class="wrapper twitter">
+
+                                       <input type="text" class="social-link-input-class form-control-plaintext" style="border-radius: 5px;
+    padding: 5px;" readonly value="<?php echo $value['twitter_url'];?>" id="twitter"  name="twitter"   placeholder="Twitter"/>
+                                     </span>
+                                      </div>
+
+                                        <div class="form-group">
+                                       <span class="wrapper youtube">
+
+                                       <input type="text" class="social-link-input-class form-control-plaintext" style=" border-radius: 5px;
+    padding: 5px;" readonly value="<?php echo $value['youtube_url'];?>"  id="youtube"  name="youtube"   placeholder="YouTube"/>
+                                     </span>
+                                      </div>
+
+                                        <div class="form-group">
+                                       <span class="wrapper IMDB">
+
+                                       <input type="text" readonly class="social-link-input-class form-control-plaintext" style="border-radius: 5px;
+    padding: 5px;" value="<?php echo $value['imdb_url'];?>" id="imdb"  name="imdb"   placeholder="IMDB"/>
+                                     </span>
+                                      </div>
+
+                                     
+                                  </div>
+                                 
+                                     <div class="col-lg-12 text-right hideSaveSocial">
+                                    
+
+                                    <button type="button" name ="submit" value="submit" class="btn btn-default  pull-right" style="background-color: #ff007c;"id="btnDirSocialLinks">Save</button>
+                                     
+                                  </div>
+                               </div>
+                                  <!-- ********** -->
+
+                    </div>
+                  </div>
+                    <div class="col-md-12">
+                      <div id="error-box" style="color:red;text-transform: initial;font-weight: bold;"></div>
+                      </div> 
+                        <?php } ?>
+                                 
+            </form>
+             </div>
+          </div>
+          <script type="text/javascript">
+   
+        $("#btnDirSocialLinks").click(function(){
+      var validation_status = directorFormValidate();
+      console.log(validation_status);
+      if(validation_status == true ) {
+        $("#error-box").hide(); 
+        var form_data = new FormData();   
+
+        //form_data.append("directorId", $('#directorId').val());
+                form_data.append("facebook", $('#facebook').val());    
+                form_data.append("instagram", $('#instagram').val()); 
+                form_data.append("twitter", $('#twitter').val());
+                form_data.append("youtube", $('#youtube').val());    
+                form_data.append("website", $('#website').val()); 
+                form_data.append("imdb", $('#imdb').val());
+                
+                $.ajax({
+                  url: '<?php echo base_url('director/dir_social_links/'); ?>',
+
+                  type: 'POST',              
+                  data : form_data,
+                  processData: false,
+                  contentType: false,
+                  dataType: "json"
+                })
+              .done(function (res) {
+                //console.log(res.status);
+                if(res.status="success"){
+                  var socialDiv = document.getElementById('social_parent_div');
+                socialDiv.classList.remove("show-border");
+                  alert("Social Link Updated Successfully.");
+                  window.location.href="<?php echo base_url('dashboard')?>";
+                }
+                else if(res.status="fail"){
+                  $("#error-box").show();            
+                  $("#error-box").html(res.reason);
+                }
+                else{
+                  console.log("Fail");
+                }
+                  //alert(res);             
+              });
+      }
+      function directorFormValidate()
+          {   
+              var status = true;         
+            var facebook=$("#facebook").val();
+      var instagram=$("#instagram").val();
+      var twitter=$("#twitter").val();
+      var youtube=$("#youtube").val();
+      var website=$("#website").val();
+      var imdb=$("#imdb").val();
+              if(facebook.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Name.<strong>");
+                status = false;
+              }            
+              else if(instagram.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Email-id.<strong>");
+                status = false;
+              }     
+              else if(twitter.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Mobile Number.<strong>");
+                status = false;
+              } 
+              
+              else if(youtube.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter City.<strong>");
+                status = false;
+              } 
+              else if(website.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Zipcode.<strong>");
+                status = false;
+              } 
+              else if(imdb.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Whatsapp Number.<strong>");
+                status = false;
+              } 
+              
+              return status;
+              console.log(status);
+          }
+
+            
+        }); 
+        
+      function newSocial()
+      {
+           $(".hideSaveSocial").show();
+           $(".hideIconsocial").hide();
+           var socialDiv = document.getElementById('social_parent_div');
+                socialDiv.classList.add("show-border");
+         document.getElementById('facebook').readOnly = false;
+          document.getElementById('instagram').readOnly = false;
+           document.getElementById('twitter').readOnly = false;
+            document.getElementById('youtube').readOnly = false;
+             document.getElementById('website').readOnly = false;
+              document.getElementById('imdb').readOnly = false;
+      }  
+  </script>
+
+<!-- End Social Link Section  -->
+<!--       Associations Section  -->
+<!-------new page-------- >
+
+  <!-----new page end here ------------>
+
+
+
+
+
+    <div class="tab-pane fade" id="nav-associations" role="tabpanel" aria-labelledby="nav-associations-tab">
+<style type="text/css">
+  .add-more-block{
+  border: 2px solid #ddd;
+}
+</style>
+       <!-- <div class="row" style="margin:0 auto">
+         
+                 <div class="col-lg-12 text-center">
+                    <h3 class="txtred">Associations</h3>
+                <p class="txtred">Tell us more about your associations</p>
+                 </div>
+               </div> -->
+                <div class="col-lg-12">
+                  <div class="row">
+                 <div class="col-lg-6 text-center ">
+                    <h3 class="txtred" style="margin-right: -388px;">Associations</h3>
+                      </div>
+               <!--   <div class="col-lg-6 hideIconassoc">
+                  
+                  <i class="fa fa-edit" data-toggle="modal" onclick="newAssoc()" style="font-size: 34px;
+    padding-top: 19px;
+    margin-left: 382px;"></i>
+                 </div> -->
+               </div>
+               </div>
+
+         <div id="awards" style="background-color: #fff;">
+        <form class="form-inline" action="" method="post">
+          
+          <div class="col-md-12 text-center">
+            <br>
+            <!-- <h2>Education: Add educational Qualifications(if any)</h2><hr> -->
+          </div>
+
+          
+            
+
+
+            <div class="pull-right col-md-12" style="
+    margin-bottom: 20px;">
+              
+                          <a href="javascript:void(0);" class="addAssocBtnDemo" onclick="Assocdemo()" title="Add field"> <i class="fa fa-plus" aria-hidden="true"></i>&emsp;<label style="font-size: 20px; display: contents;color:#AD8C29;cursor: pointer;">Add More Associations</label></a>
+                      </div>
+
+                        <form id="association">
+
+<div class="video-box col-md-12">
+ <?php
+                      $result = $this->db->select('*')->from('director_assoc')->get()->result_array();
+                                     // print_r($result);exit;
+                                    foreach ($result as $valu) {  ?>
+  <div class="add-more-block row" id="assoc_parent_div<?php echo $valu['assoc_id']?>" style="margin-bottom: 20px;">
+    <div class="col-lg-12 hideIconassoc">
+                  
+                  <i class="fa fa-edit" data-toggle="modal" onclick="newAssoc(<?php echo $valu['assoc_id']?>)" style="font-size: 34px;
+    padding-top: 19px;
+    margin-left: 843px;"></i>
+                 </div>
+    <!-- background-color: #ddd;margin: 0px"> -->
+              <div class="col-md-6">
+
+<div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Association Name</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" class="form-control" readonly id="association_name<?php echo $valu['assoc_id']?>" name="association_name" value="<?php echo $valu['association_name'];?>" >
+    </div>
+</div>
+                                     
+
+
+                                  </div>
+               <div class="col-md-6">
+<div class="form-group row required">
+    <label for="staticEmail" class="col-md-5 col-form-label">Association ID</label>
+    <div class="col-md-7">
+      <input type="text" readonly class="form-control-plaintext" name="association_id" id="associaton_id<?php echo $valu['assoc_id']?>" value="<?php echo $valu['associaton_id'];?>" class="form-control" >
+    </div>
+</div>
+                                      
+                                    
+                                   
+                                  </div>
+              
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center hideSaveAssoc"style="
+    
+    padding: 20px;
+    ">
+    <button type="button"  name="submit" id="saveBtnAssoc<?php echo $valu['assoc_id']?>" style="width: 110px;margin-left: 743px;float: right;display: none; background-color: #ff007c;" onclick="GetAssoc(<?php echo $valu['assoc_id']?>)"
+    class="btn btn-default btn-block" >Save</button>
+                       </div>
+            </div> 
+            <?php } ?> 
+          </div>
+        </form>
+         <!--  <?php if($value['association_name1']!='' || $value['association_id1']!=''){ ?>
+                <div class="video-box col-md-12 view-association-section-show">
+
+              <div class="add-more-block row" style="
+    
+    margin-bottom: 20px;">
+
+
+              <div class="col-md-6">
+                                      <div class="form-group required">
+                                      <label>Association Name</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" class="form-control" readonly id="association_name1" name="association_name1" style="border-radius: 5px;
+    padding: 5px;" value="<?php echo $value['association_name1'];?>" >
+                                      </div>
+                                  
+                                  </div>
+               <div class="col-md-6">
+                                      <div class="form-group required">
+                                        <label>Association ID</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" readonly name="association_id1" style="border-radius: 5px;
+    padding: 5px;" id="association_id1" value="<?php echo $value['association_id1'];?>" class="form-control">
+                                    
+                                      </div>
+                                    
+                                   
+                                  </div>
+                                </div>
+                              </div> 
+         <?php } ?> -->
+
+           <div class="video-box col-md-12 view-association-section">
+
+              <div class="add-more-block row" style="
+    
+    margin-bottom: 20px;">
+
+
+   <!--  <style="background-color: #ddd;></style> -->
+              <div class="col-md-6">
+                                      <div class="form-group required">
+                                      <label>Association Name</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" class="form-control" id="association_name" name="association_name" style="border-radius: 5px;
+    padding: 5px;"  value="" >
+                                      </div>
+                                  
+                                  </div>
+               <div class="col-md-6">
+                                      <div class="form-group required">
+                                        <label>Association ID</label>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" name="association_id" style="border-radius: 5px;
+    padding: 5px;" id="associaton_id" value="" class="form-control">
+                                        <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                                          <!-- <div class="row  pull-right">
+                                        <button class=" " type="button" onclick="buttondemo()"> close </button>
+                                      </div> -->
+                                      </div>
+                                    
+                                   
+                                  </div>
+                                     <!--  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-right"style="
+    
+    padding: 20px;
+    "> -->
+                                    <div class="row  pull-right">
+                                        <button class="closeBtn" type="button" onclick="buttondemo()"> X </button>
+                                      </div>
+
+                                </div>
+                              </div> 
+
+                          <!-- <div class="row  pull-right"> -->
+                             <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center hideSaveAssoc"style="
+    
+    padding: 20px;
+    ">
+                             <button type="submit" name="submit" style="width: 110px;background-color: #ff007c;
+    float: right;" class="btn btn-default btn-block" id="btnDirectorAsso">Save</button>
+                       </div> -->
+
+
+
+ <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center hideaddassoc"style="
+    
+    padding: 20px;
+    ">
+                             <button type="button" onclick="AddAssoc()" name="submit" style="width: 110px;
+    float: right; background-color: #ff007c;" class="btn btn-default btn-block">Add</button>
+  <!--   id="btnDirectorWorkexp" -->
+                       </div>
+
+
+          
+        </form>
+
+</div>
+</div>
+
+          <script type="text/javascript">
+
+            function Assocdemo()
+{
+   // alert(1);
+   $('.view-association-section').show();
+   $('.hideaddassoc').show();
+
+ }
+
+
+function AddAssoc()
+  {
+    // $('.submit').click(function(){
+        //var id = (this.id);
+        var form_data = {            //repair
+          //  work_id: id,
+            association_name: $('#association_name').val(),
+            association_id: $('#associaton_id').val(),
+           
+        };
+
+    $.ajax({
+      
+        url: '<?php echo base_url('director/add_director_assoc/'); ?>',//repair
+        type: 'POST',
+        data: form_data, // $(this).serialize(); you can use this too
+        success: function(msg) {
+              alert("success..!! ");
+        }
+
+   });
+   return false;
+
+
+  }
+function GetAssoc($data)
+{
+alert("association_name" +$data);
+
+ // var id=document.getElementById("project_type" +$data).value;
+
+var $association_name_new=document.getElementById("association_name" +$data).value;
+var $association_id_new=document.getElementById("associaton_id" +$data).value;
+
+ //alert($association_name_new);
+updateAssoc($data);
+}
+
+
+ function buttondemo()
+ {
+  $('.view-association-section').hide();
+   document.getElementById("association_name1").value = '';
+   document.getElementById("association_id1").value = '';
+  }
+
+function updateAssoc($data){
+
+       
+        //alert($data);
+var $association_name_new=document.getElementById("association_name" +$data).value;
+var $association_id_new=document.getElementById("associaton_id" +$data).value;
+console.log("Inside assoc function........................");
+       // $("#btnDirectorAsso").click(function(){
+      var validation_status = directorFormValidate($data);
+      console.log(validation_status);
+      if(validation_status == true ) {
+        $("#error-box").hide(); 
+        var form_data = new FormData();     
+        //form_data.append("directorId", $('#directorId').val());
+                form_data.append("association_name",$association_name_new);    
+                form_data.append("associaton_id", $association_id_new); 
+
+                
+                var jsonData = {
+                  "association_name":$association_name_new,
+                  "associaton_id":$association_id_new,
+                  
+                }
+
+                console.log("jsonData", jsonData);
+                
+                $.ajax({
+                  url:'<?php echo base_url('director/dir_assoc/'); ?>'+ $data, 
+
+
+                  type: 'POST',              
+                  data : form_data,
+                  processData: false,
+                  contentType: false,
+                  dataType: "json"
+                })
+              .done(function (res) {
+                //alert("hiii");
+                console.log("RESULT---------------------------",res);
+                var assocDiv = document.getElementById('assoc_parent_div'+id);
+                assocDiv.classList.remove("show-border");
+ 
+                /*if(res.status="success"){
+                  alert("Work Experience Successfully.");
+                window.location.href="<?php // echo base_url('dashboard')?>";
+                }
+                else if(res.status="fail"){
+                  $("#error-box").show();            
+                  $("#error-box").html(res.reason);
+                }
+                else{
+                  console.log("Fail");
+                }*/
+                  //alert(res);             
+              });
+      }
+      
+
+            
+        //});
+        } 
+
+      function directorFormValidate($data)
+          {   
+            //var id=$data;
+            //alert();
+              var status = true;         
+var $association_name_new=document.getElementById("association_name" +$data).value;
+var $association_id_new=document.getElementById("associaton_id" +$data).value;
+
+var association_name= $association_name_new;
+      var association_id=$association_id_new;
+
+
+              // if(association_name.trim() == '') { 
+              //   $("#error-box").show();            
+              //   $("#error-box").html("<strong> * Please Enter Association Name.<strong>");
+              //   status = false;
+              // }            
+              // else if(association_id.trim() == '') { 
+              //   $("#error-box").show();            
+              //   $("#error-box").html("<strong> * Please Enter Association Id.<strong>");
+              //   status = false;
+              // }     
+              console.log("validation_status....................",status);
+              return status;
+          }
+
+            
+        
+
+       
+      function newAssoc(id)
+      {
+        $(".hideSaveAssoc").show();
+        $(".hideIconassoc").hide();
+        var assocDiv = document.getElementById('assoc_parent_div'+id);
+                assocDiv.classList.add("show-border");
+ 
+           $('input[type="text"], textarea').removeAttr('readonly');
+         document.getElementById('association_name'+id).readOnly = false;
+          document.getElementById('associaton_id'+id).readOnly = false;
+           
+            document.getElementById('saveBtnAssoc'+id).style.display = "block";
+      } 
+  </script>
+
+ <!--  End Associations  -->
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ./Tabs -->
+<script type="text/javascript">
+  
+</script>
+<script type="text/javascript">
+
+$('.addfiles').on('click', function() { $('#profile_pic').click();return false;});
+$('.addscript').on('click', function() { $('#script_name').click();return false;});
+
+   $("#btnDirectorProfile").click(function(){
+      var validation_status = directorFormValidate();
+      //console.log(validation_status);
+      if(validation_status == true ) {
+        $("#error-box").hide(); 
+        var form = $('form')[0];
+        var form_data = new FormData(form);
+                form_data.append('profile_pic', $('input[type=file]')[0].files[0]);   
+                form_data.append('script_name', $('input[type=file]')[1].files[0]);   
+                form_data.append("companyName", $('#companyName').val());
+                form_data.append("email", $('#email').val());    
+                form_data.append("mobile", $('#mobile').val()); 
+                // form_data.append("password", $('#password').val());
+                form_data.append("address", $('#address').val());    
+                form_data.append("pincode", $('#pincode').val()); 
+                form_data.append("city", $('#city').val());
+
+                $.ajax({
+                  url: '<?php echo base_url('director/director_editProfile/'); ?>',
+                  type: 'POST',              
+                  data : form_data,
+                  processData: false,
+                  contentType: false,
+                  dataType: "json"
+                })
+              .done(function (res) {
+                console.log(res);
+              if(res.status="success"){
+                  alert("Profile Updated Successfully.");
+                   var profileDiv = document.getElementById('profile_parent_div');
+                profileDiv.classList.remove("show-border");
+                  // window.location.href="<?php //echo base_url('director/editDirectorProfile')?>";
+                  // $("#workExperienceView").html(res.status);
+                 // alert(1);
+                  
+                }
+                else if(res.status="fail"){
+                  $("#error-box").show();            
+                  $("#error-box").html(res.reason);
+                }
+                else{
+                  console.log("Fail");
+                }
+                $("#workExperienceView").show();
+              });
+      }
+      function directorFormValidate()
+          {   
+        var status = true;         
+        var companyName=$("#companyName").val();
+        var email=$("#email").val();
+        var mobile=$("#mobile").val();
+        // var password=$("#password").val();
+        var address=$("#address").val();
+        var pincode=$("#pincode").val();
+        var city=$("#city").val();
+        // var confirmPassword=$("#confirmPassword").val();    
+              if(companyName.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Company Name.<strong>");
+                status = false;
+              }            
+              else if(email.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Your Email-id.<strong>");
+                status = false;
+              }     
+              else if(mobile.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Your Mobile Number<strong>");
+                status = false;
+              } 
+              else if(address.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Your Address<strong>");
+                status = false;
+              } 
+              else if(pincode.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Your Pincode<strong>");
+                status = false;
+              } 
+              else if(city.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Your City<strong>");
+                status = false;
+              } 
+             /* else if(password.trim() == '') { 
+                $("#error-box").show();            
+                $("#error-box").html("<strong> * Please Enter Your Password<strong>");
+                status = false;
+              }*/
+              // else if(password.trim() != confirmPassword.trim()) { 
+              //   $("#error-box").show();            
+              //   $("#error-box").html("<strong> * Please Confirm your Password<strong>");
+              //   status = false;
+              // } 
+              return status;
+              console.log(status);
+          }
+            
+        });
+  </script>
+
+
+
+<script type="text/javascript">
+  function newInfo()
+  {
+    $(".hideImage").show();
+    $(".hideScript").show();
+    $(".showScript").hide();
+    $(".hideSave").show();
+    
+    $(".hideIcon").hide();
+
+    document.getElementById('profile_pic').readOnly = false;
+   // document.getElementById('companyName').readOnly = false;
+    //document.getElementById('email').readOnly = false;
+     var profileDiv = document.getElementById('profile_parent_div');
+                profileDiv.classList.add("show-border");
+    document.getElementById('mobile').readOnly = false;
+    document.getElementById('address').readOnly = false;
+    document.getElementById('pincode').readOnly = false;
+    document.getElementById('city').readOnly = false;
+    document.getElementById('script_name').readOnly = false;
+     document.getElementById('btnDirectorProfile').readOnly = false;
+
+  }
+</script>
